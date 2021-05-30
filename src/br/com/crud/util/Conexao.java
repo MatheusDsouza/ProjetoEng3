@@ -2,21 +2,32 @@ package br.com.crud.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class Conexao {
-	private static String driver;
-	private static String url;
-	private static String user;
-	private static String password;
 
-	public static Connection getConnectionPostgres() throws Exception {
-		driver = "org.postgresql.Driver";
-		url = "jdbc:postgresql://localhost:5432/engenharia";
-		user = "postgres";
-		password = "1234";
+	public static Connection getConnection() throws Exception {
+		
+		String driver = "org.postgresql.Driver";
+		String senha = "1234";
+		String url = "jdbc:postgresql://localhost:5432/sistema";
+		String user = "postgres";
+
 		Class.forName(driver);
-		Connection conn = DriverManager.getConnection(url, user, password);
-		return conn;
+
+		Connection con = DriverManager.getConnection(url, user, senha);
+
+		return con;
+	}
+
+	public static void closeConnection(Connection con) {
+		if (con != null) {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 }

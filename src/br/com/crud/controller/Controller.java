@@ -26,7 +26,7 @@ public class Controller extends HttpServlet{
     Map<String, IViewHelper> vhs;
     Map<String, ICommand> cmd;
 	
-	Controller(){
+	public Controller(){
 		
 		cmd = new HashMap<String, ICommand>();
         cmd.put("SALVAR", new SalvarCommand());

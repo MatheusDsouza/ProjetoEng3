@@ -13,10 +13,10 @@ public class Aluno extends Pessoa{
 	public void setRa(String ra) {
 		this.ra = ra;
 	}
-	public Turma getCurso() {
+	public Turma getTurma() {
 		return turma;
 	}
-	public void setCurso(Turma turma) {
+	public void setTurma(Turma turma) {
 		this.turma = turma;
 	}
 	public String getNomePai() {
