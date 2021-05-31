@@ -1,12 +1,16 @@
 package br.com.crud.vh;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import br.com.crud.dao.AlunoDao;
 import br.com.crud.dao.TurmaDao;
 import br.com.crud.model.Aluno;
 import br.com.crud.model.Cidade;
@@ -20,19 +24,18 @@ public class AlunoVH implements IViewHelper {
 	@Override
 	public EntidadeDominio getEntidade(HttpServletRequest request) {
 
-		HttpSession session = null;
 		Aluno aluno = new Aluno();
 
 		String operacao = request.getParameter("OPERACAO");
 
 		if (operacao.equals("CONSULTAR")) {
 
-			session = request.getSession();
+			
 			request.setAttribute("aluno", aluno);
 
 		} else if (operacao.equals("SALVAR")) {
 
-			session = request.getSession();
+			
 			aluno = buildAlunoSalvar(request);
 
 		} else if (operacao.equals("EDITAR")) {
@@ -41,7 +44,6 @@ public class AlunoVH implements IViewHelper {
 
 		} else if (operacao.equals("EXCLUIR")) {
 
-			session = request.getSession();
 			aluno = new Aluno();
 
 		}
@@ -52,7 +54,28 @@ public class AlunoVH implements IViewHelper {
 	@Override
 	public void setView(Resultado resultado, HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
-		// TODO Auto-generated method stub
+		
+		Aluno aluno = (Aluno) resultado.getResultado();
+		RequestDispatcher rd = null;
+		String operacao = request.getParameter("OPERACAO");
+		
+		if (operacao.equals("SALVAR")) {
+
+//			AlunoDao dao = new AlunoDao();
+//			List<Aluno> lista = new ArrayList<Aluno>();
+//
+//			for(EntidadeDominio ent : resultado.getResultados()) {
+//				Aluno aln = (Aluno) ent;
+//				lista.add(aln);
+//			}
+			
+			//request.getSession().setAttribute("listaAlunos", lista);
+			
+			
+			rd = request.getRequestDispatcher("index.html");
+			
+			rd.forward(request, response);
+		}
 
 	}
 
