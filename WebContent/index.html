@@ -3,14 +3,18 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css"/> 
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
     <title>CRUD Aluno</title>
 </head>
 
 <body>
     <a href="cadAluno.jsp" class="btn btn-primary">Cadastrar Aluno</a>
 
-    <a href="consultaAluno.jsp" class="btn btn-primary">Consultar Aluno</a>
+    <form method="GET" action="ConsultarAluno">
+
+        <a type="submit" href="consultaAluno.jsp" class="btn btn-primary">Consultar Aluno</a>
+        
+    </form>
 
     <script type="javascript" src="assets/js/bootstrap.min.js"></script>
 </body>
