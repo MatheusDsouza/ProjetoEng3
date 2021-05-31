@@ -79,8 +79,55 @@ public class AlunoDao extends AbstractDao {
 
 	@Override
 	public Resultado editar(EntidadeDominio ent) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		abrirConexao();
+		
+		Resultado resultado = new Resultado();
+		Aluno aluno = (Aluno) ent;
+
+		PreparedStatement pst = null;
+		StringBuilder sql = new StringBuilder();
+
+		sql.append("UPDATE " + nomeTabela + " SET ");
+		sql.append("ALN_RA=?, ");
+		sql.append("ALN_NOME=?, ");
+		sql.append("ALN_CUR_ID=?, ");
+		sql.append("ALN_NOMEPAI=?, ");
+		sql.append("ALN_NOMEMAE=?, ");
+		sql.append("ALN_TELEFONE=?,");
+		sql.append(" ALN_ID_END=? ");
+		sql.append("WHERE " + idTable + " = " + aluno.getId() + ";");
+
+		try {
+			
+			
+			pst = conexao.prepareStatement(sql.toString());
+			pst.setString(1, aluno.getRa());
+			pst.setString(2, aluno.getNome());
+			pst.setInt(3, aluno.getTurma().getId());
+			pst.setString(4, aluno.getNomePai());
+			pst.setString(5, aluno.getNomeMae());
+			pst.setString(6, aluno.getTelefone());
+			pst.setInt(7, aluno.getEndereco().getId());
+			
+			pst.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			try {
+				conexao.rollback();
+			} catch (SQLException ex) {
+				e.printStackTrace();
+			}
+		} finally {
+			try {
+				conexao.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return resultado;
 	}
 
 }
