@@ -29,7 +29,6 @@ public class AlunoVH implements IViewHelper {
 		String operacao = request.getParameter("OPERACAO");
 
 		if (operacao.equals("CONSULTAR")) {
-
 			
 			request.setAttribute("aluno", aluno);
 

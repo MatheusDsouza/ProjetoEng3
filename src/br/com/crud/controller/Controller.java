@@ -17,7 +17,9 @@ import br.com.crud.command.SalvarCommand;
 import br.com.crud.model.EntidadeDominio;
 import br.com.crud.model.Resultado;
 import br.com.crud.vh.AlunoVH;
+import br.com.crud.vh.ConsultarAlunoVH;
 import br.com.crud.vh.IViewHelper;
+import br.com.crud.vh.SalvarAlunoVH;
 
 public class Controller extends HttpServlet{
 
@@ -35,16 +37,14 @@ public class Controller extends HttpServlet{
         cmd.put("EXCLUIR", new ExcluirCommand());
         
         vhs = new HashMap<String, IViewHelper>();
-        vhs.put("/ProjEng3/SalvarAluno", new AlunoVH());
-        vhs.put("/ProjEng3/ConsultarAluno", new AlunoVH());
+        vhs.put("/ProjEng3/SalvarAluno", new SalvarAlunoVH());
+        vhs.put("/ProjEng3/ConsultarAluno", new ConsultarAlunoVH());
         vhs.put("/ProjEng3/EditarAluno", new AlunoVH());
         vhs.put("/ProjEng3/ExcluirAluno", new AlunoVH());
-        
-		
 	}
 
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String operacao = request.getParameter("OPERACAO");
         String uri = request.getRequestURI();
@@ -55,26 +55,6 @@ public class Controller extends HttpServlet{
         ICommand command = cmd.get(operacao);
 
         EntidadeDominio ent = vh.getEntidade(request);
-
-        resultado = command.executar(ent);
-
-        vh.setView(resultado, request, response);
-	}
-	
-	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String operacao = request.getParameter("OPERACAO");
-        String uri = request.getRequestURI();
-
-        Resultado resultado = new Resultado();
-
-        IViewHelper vh = vhs.get(uri);
-        ICommand command = null;
-
-        EntidadeDominio ent = vh.getEntidade(request);
-
-        command = cmd.get(operacao);
 
         resultado = command.executar(ent);
 

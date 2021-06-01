@@ -23,12 +23,12 @@
 
                         <div class="form-group">
                             <label>RA</label>
-                            <input type="text" class="form-control" id="raAluno" name="raAluno" placeholder="RA do Aluno">
+                            <input type="text" class="form-control" id="raAluno" name="raAluno" placeholder="RA do Aluno" required="true">
                         </div>
 
                         <div class="form-group">
                             <label>Nome</label>
-                            <input type="text" class="form-control" id="nomeAluno" name="nomeAluno" placeholder="Nome do Aluno">
+                            <input type="text" class="form-control" id="nomeAluno" name="nomeAluno" placeholder="Nome do Aluno" required="true">
                         </div>
 
                         <div class="form-group">
@@ -48,38 +48,38 @@
 
                         <div class="form-group">
                             <label>Pai do Aluno</label>
-                            <input type="text" class="form-control" id="paiAluno" name="paiAluno" placeholder="Nome do Pai do Aluno">
+                            <input type="text" class="form-control" id="paiAluno" name="paiAluno" placeholder="Nome do Pai do Aluno" required="true">
                         </div>
 
                         <div class="form-group">
                             <label>Mãe do Aluno</label>
-                            <input type="text" class="form-control" id="maeAluno" name="maeAluno" placeholder="Nome da Mãe do Aluno">
+                            <input type="text" class="form-control" id="maeAluno" name="maeAluno" placeholder="Nome da Mãe do Aluno" required="true">
                         </div>
 
                         <div class="form-group">
                             <label>Telefone</label>
-                            <input type="text" class="form-control" id="telefoneAluno" name="telefoneAluno" placeholder="Telefone do Aluno">
+                            <input type="text" class="form-control" id="telefoneAluno" name="telefoneAluno" placeholder="Telefone do Aluno" required="true">
                         </div>
 
                         <div class="form-group">
                             <label>CEP</label>
-                            <input type="text" class="form-control" id="cepAluno" name="cepAluno" placeholder="CEP do Aluno">
+                            <input type="text" class="form-control" id="cepAluno" name="cepAluno" placeholder="CEP do Aluno" required="true">
                         </div>
 
                         <div class="form-group">
                             <label>Logradouro</label>
                             <input type="text" class="form-control" id="logradouroAluno" name="logradouroAluno"
-                                placeholder="Logradouro do Aluno">
+                                placeholder="Logradouro do Aluno" required="true">
                         </div>
 
                         <div class="form-group">
                             <label>Cidade</label>
-                            <input type="text" class="form-control" id="cidadeAluno" name="cidadeAluno" placeholder="Cidade do Aluno">
+                            <input type="text" class="form-control" id="cidadeAluno" name="cidadeAluno" placeholder="Cidade do Aluno" required="true">
                         </div>
 
                         <div class="form-group">
                             <label>Estado</label>
-                            <input type="text" class="form-control" id="estadoAluno" name="estadoAluno" placeholder="Estado do Aluno">
+                            <input required="true" type="text" class="form-control" id="estadoAluno" name="estadoAluno" placeholder="Estado do Aluno">
                         </div>
 
                         <button id="OPERACAO" name="OPERACAO" value="SALVAR" type="submit" class="btn btn-primary">Cadastrar Aluno</button>

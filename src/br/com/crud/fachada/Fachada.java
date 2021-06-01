@@ -80,8 +80,33 @@ public class Fachada implements IFachada {
 
 	@Override
 	public Resultado consultar(EntidadeDominio ent) {
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("-FACHADA CONSULTAR");
+		resultado = new Resultado();
+		nomeClasse = ent.getClass().getName();
+		System.out.println("-Nome da Classe da entidade: " + nomeClasse);
+		rng = regrasNegocio.get(nomeClasse);
+		msgErro.setLength(0);
+
+		executarRegras(rng, ent);
+
+		if (msgErro.length() == 0 || msgErro.toString().trim().equals("")) {
+			try {
+				dao = daos.get(nomeClasse);
+				System.out.println("-CHAMANDO METODO DAO DE CONSULTAR");
+				resultado = dao.consultar(ent);
+				resultado.add(ent);
+				System.out.println("- PRONTO, DEU DE CONSULTAR O OBJETO");
+			} catch (Exception e) {
+				e.printStackTrace();
+				resultado.setMensagens("-VOLTOU PRA CONSULTAR DANDO ERRO");
+			}
+		} else {
+
+			resultado.add(ent);
+			resultado.setMensagens(msgErro.toString());
+		}
+
+		return resultado;
 	}
 
 	@Override
