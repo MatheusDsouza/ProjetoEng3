@@ -7,7 +7,7 @@ public class TesteCrud {
 	public static void main(String[] args) {
 
 		AlunoDao dao = new AlunoDao();
-		Resultado resultado = dao.consultar(null);
+		Resultado resultado = dao.excluir(null);
 
 		Aluno aluno = (Aluno) resultado.getResultados().get(1);
 		

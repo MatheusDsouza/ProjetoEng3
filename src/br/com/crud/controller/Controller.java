@@ -30,24 +30,25 @@ public class Controller extends HttpServlet{
 	
 	public Controller(){
 		
+		vhs = new HashMap<String, IViewHelper>();
+		vhs.put("/ProjEng3/SalvarAluno", new SalvarAlunoVH());
+		vhs.put("/ProjEng3/ConsultarAluno", new ConsultarAlunoVH());
+		vhs.put("/ProjEng3/EditarAluno", new AlunoVH());
+		vhs.put("/ProjEng3/ExcluirAluno", new AlunoVH());
+		
 		cmd = new HashMap<String, ICommand>();
         cmd.put("SALVAR", new SalvarCommand());
         cmd.put("EDITAR", new EditarCommand());
         cmd.put("CONSULTAR", new ConsultarCommand());
         cmd.put("EXCLUIR", new ExcluirCommand());
         
-        vhs = new HashMap<String, IViewHelper>();
-        vhs.put("/ProjEng3/SalvarAluno", new SalvarAlunoVH());
-        vhs.put("/ProjEng3/ConsultarAluno", new ConsultarAlunoVH());
-        vhs.put("/ProjEng3/EditarAluno", new AlunoVH());
-        vhs.put("/ProjEng3/ExcluirAluno", new AlunoVH());
 	}
 
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String operacao = request.getParameter("OPERACAO");
         String uri = request.getRequestURI();
+        String operacao = request.getParameter("OPERACAO");
 
         Resultado resultado = new Resultado();
 

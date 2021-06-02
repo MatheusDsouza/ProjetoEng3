@@ -49,6 +49,7 @@ public class EnderecoDao extends AbstractDao {
 			}else {
 				end.setId(10000);
 			}
+			
 			resultado.setResultado(end);
 			conexao.commit();
 			

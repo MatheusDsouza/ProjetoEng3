@@ -80,6 +80,7 @@ public class Fachada implements IFachada {
 
 	@Override
 	public Resultado consultar(EntidadeDominio ent) {
+
 		System.out.println("-FACHADA CONSULTAR");
 		resultado = new Resultado();
 		nomeClasse = ent.getClass().getName();
@@ -98,7 +99,11 @@ public class Fachada implements IFachada {
 				System.out.println("- PRONTO, DEU DE CONSULTAR O OBJETO");
 			} catch (Exception e) {
 				e.printStackTrace();
+				
 				resultado.setMensagens("-VOLTOU PRA CONSULTAR DANDO ERRO");
+
+				resultado.setMensagens("-VOLTOU PRA FACHADA DANDO ERRO");
+
 			}
 		} else {
 

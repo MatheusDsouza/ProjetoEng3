@@ -21,7 +21,7 @@ public class AlunoDao extends AbstractDao {
 	public Resultado salvar(EntidadeDominio ent) {
 		abrirConexao();
 
-		Endereco end = new Endereco();
+		Endereco end;
 		EnderecoDao endDao = new EnderecoDao();
 
 		Resultado resultado = new Resultado();
@@ -191,45 +191,6 @@ public class AlunoDao extends AbstractDao {
 		}
 
 		return resultado;
-	}
-
-	@Override
-	public Resultado excluir(EntidadeDominio ent) {
-		abrirConexao();
-
-		Resultado resultado = new Resultado();
-		Aluno aluno = (Aluno) ent;
-
-		PreparedStatement pst = null;
-		StringBuilder sql = new StringBuilder();
-
-		sql.append("DELETE FROM " + nomeTabela + " WHERE " + idTable + "=?");
-
-		try {
-			pst = conexao.prepareStatement(sql.toString());
-			pst.setInt(1, aluno.getId());
-			pst.execute();
-			conexao.commit();
-
-			System.out.println(aluno.getNome() + " EXCLUÍDO | Id: " + aluno.getId());
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			try {
-				conexao.rollback();
-			} catch (SQLException ex) {
-				e.printStackTrace();
-			}
-		} finally {
-			try {
-				conexao.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-
-		return resultado;
-		
 	}
 
 }

@@ -11,12 +11,11 @@
         <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
         <title>Cadastro de Aluno</title>
     </head>
-
+    
     <body>
 
-
         <div class="container">
-            <div class="row">
+            <div class="row justify-content-center">
                 <div class="col-6">
 
                     <form action="SalvarAluno" method="POST">
@@ -34,7 +33,7 @@
                         <div class="form-group">
                             <label>Turma</label>
                             <br />
-                            <select class="custom-select" id="turmaAluno" name="turmaAluno">
+                            <select class="custom-select" id="turmaAluno" name="turmaAluno" required="true">
                                 <option selected>Selecione a turma do Aluno</option>
                                 <%
                                 	TurmaDao turma = new TurmaDao();
