@@ -98,10 +98,7 @@ public class Fachada implements IFachada {
 				resultado.add(ent);
 				System.out.println("- PRONTO, DEU DE CONSULTAR O OBJETO");
 			} catch (Exception e) {
-				e.printStackTrace();
-				
-				resultado.setMensagens("-VOLTOU PRA CONSULTAR DANDO ERRO");
-
+				e.printStackTrace();			
 				resultado.setMensagens("-VOLTOU PRA FACHADA DANDO ERRO");
 
 			}
@@ -116,14 +113,68 @@ public class Fachada implements IFachada {
 
 	@Override
 	public Resultado editar(EntidadeDominio ent) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		System.out.println("-FACHADA EDITAR");
+		resultado = new Resultado();
+		nomeClasse = ent.getClass().getName();
+		System.out.println("-Nome da Classe da entidade: " + nomeClasse);
+		rng = regrasNegocio.get(nomeClasse);
+		msgErro.setLength(0);
+
+		executarRegras(rng, ent);
+
+		if (msgErro.length() == 0 || msgErro.toString().trim().equals("")) {
+			try {
+				dao = daos.get(nomeClasse);
+				System.out.println("-CHAMANDO METODO DAO DE EDITAR");
+				resultado = dao.editar(ent);
+				resultado.add(ent);
+				System.out.println("- PRONTO, DEU DE EDITAR O OBJETO");
+			} catch (Exception e) {
+				e.printStackTrace();
+				resultado.setMensagens("-VOLTOU PRA FACHADA DANDO ERRO");
+
+			}
+		} else {
+
+			resultado.add(ent);
+			resultado.setMensagens(msgErro.toString());
+		}
+
+		return resultado;
 	}
 
 	@Override
 	public Resultado excluir(EntidadeDominio ent) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		System.out.println("-FACHADA EXCLUIR");
+		resultado = new Resultado();
+		nomeClasse = ent.getClass().getName();
+		System.out.println("-Nome da Classe da entidade: " + nomeClasse);
+		rng = regrasNegocio.get(nomeClasse);
+		msgErro.setLength(0);
+
+		executarRegras(rng, ent);
+
+		if (msgErro.length() == 0 || msgErro.toString().trim().equals("")) {
+			try {
+				dao = daos.get(nomeClasse);
+				System.out.println("-CHAMANDO METODO DAO DE EXCLUIR");
+				resultado = dao.excluir(ent);
+				resultado.add(ent);
+				System.out.println("- PRONTO, DEU DE EXCLUIR O OBJETO");
+			} catch (Exception e) {
+				e.printStackTrace();
+				resultado.setMensagens("-VOLTOU PRA FACHADA DANDO ERRO");
+
+			}
+		} else {
+
+			resultado.add(ent);
+			resultado.setMensagens(msgErro.toString());
+		}
+
+		return resultado;
 	}
 
 	private void executarRegras(List<IStrategy> rngEntidade, EntidadeDominio entidade) {

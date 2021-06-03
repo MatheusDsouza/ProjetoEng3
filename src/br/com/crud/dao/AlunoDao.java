@@ -95,6 +95,7 @@ public class AlunoDao extends AbstractDao {
 			EnderecoDao eDao = new EnderecoDao();
 			int idTurma = 0;
 			int idEnd = 0;
+			int i = 1;
 
 			while (rs.next()) {
 
@@ -111,11 +112,11 @@ public class AlunoDao extends AbstractDao {
 
 				idEnd = rs.getInt("aln_end_id");
 				aluno.setEndereco(eDao.consultarById(idEnd));
-
+				
 				alunos.add(aluno);
-
+				
 			}
-
+			
 			conexao.commit();
 
 		} catch (SQLException e) {

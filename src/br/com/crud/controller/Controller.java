@@ -16,8 +16,9 @@ import br.com.crud.command.ICommand;
 import br.com.crud.command.SalvarCommand;
 import br.com.crud.model.EntidadeDominio;
 import br.com.crud.model.Resultado;
-import br.com.crud.vh.AlunoVH;
 import br.com.crud.vh.ConsultarAlunoVH;
+import br.com.crud.vh.EditarAlunoVH;
+import br.com.crud.vh.ExcluirAlunoVH;
 import br.com.crud.vh.IViewHelper;
 import br.com.crud.vh.SalvarAlunoVH;
 
@@ -33,8 +34,8 @@ public class Controller extends HttpServlet{
 		vhs = new HashMap<String, IViewHelper>();
 		vhs.put("/ProjEng3/SalvarAluno", new SalvarAlunoVH());
 		vhs.put("/ProjEng3/ConsultarAluno", new ConsultarAlunoVH());
-		vhs.put("/ProjEng3/EditarAluno", new AlunoVH());
-		vhs.put("/ProjEng3/ExcluirAluno", new AlunoVH());
+		vhs.put("/ProjEng3/EditarAluno", new EditarAlunoVH());
+		vhs.put("/ProjEng3/ExcluirAluno", new ExcluirAlunoVH());
 		
 		cmd = new HashMap<String, ICommand>();
         cmd.put("SALVAR", new SalvarCommand());

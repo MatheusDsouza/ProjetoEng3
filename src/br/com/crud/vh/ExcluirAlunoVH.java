@@ -11,12 +11,12 @@ import br.com.crud.model.Aluno;
 import br.com.crud.model.EntidadeDominio;
 import br.com.crud.model.Resultado;
 
-public class ConsultarAlunoVH implements IViewHelper {
+public class ExcluirAlunoVH implements IViewHelper {
 
 	@Override
 	public EntidadeDominio getEntidade(HttpServletRequest request) {
 		Aluno aluno = new Aluno();
-		
+		aluno.setId(Integer.parseInt(request.getParameter("idAluno")));
 		return aluno;
 	}
 
@@ -24,12 +24,9 @@ public class ConsultarAlunoVH implements IViewHelper {
 	public void setView(Resultado resultado, HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
 		
-		request.setAttribute("alunos", resultado.getResultados());
-		System.out.println(resultado.getResultados().size());
-		
-		RequestDispatcher rd = request.getRequestDispatcher("/consultaAluno.jsp");
-		
+		RequestDispatcher rd = request.getRequestDispatcher("index.html");
 		rd.forward(request, response);
+
 	}
 
 }
