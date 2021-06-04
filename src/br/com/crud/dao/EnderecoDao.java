@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import br.com.crud.model.Aluno;
 import br.com.crud.model.Cidade;
 import br.com.crud.model.Endereco;
 import br.com.crud.model.EntidadeDominio;
@@ -85,8 +86,51 @@ public class EnderecoDao extends AbstractDao {
 
 	@Override
 	public Resultado editar(EntidadeDominio ent) {
-		// TODO Auto-generated method stub
-		return null;
+
+		abrirConexao();
+
+		Resultado resultado = new Resultado();
+		Endereco end = (Endereco) ent;
+
+		PreparedStatement pst = null;
+		StringBuilder sql = new StringBuilder();
+		
+		sql.append("UPDATE " + nomeTabela + " SET ");
+		sql.append("END_CEP=?, ");
+		sql.append("END_LOGRADOURO=?, ");
+		sql.append("END_CIDADE=?, ");
+		sql.append("END_ESTADO=? ");
+		sql.append("WHERE " + idTable + " = " + end.getId() + ";");
+
+		try {
+			pst = conexao.prepareStatement(sql.toString());
+		
+			pst.setString(1, end.getCep());
+			pst.setString(2, end.getLogradouro());
+			pst.setString(3, end.getCidade().getCidade());
+			pst.setString(4, end.getCidade().getEstado().getUf());
+			
+			System.out.println(pst.toString());
+			pst.executeUpdate();
+			
+			conexao.commit();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			try {
+				conexao.rollback();
+			} catch (SQLException ex) {
+				e.printStackTrace();
+			}
+		} finally {
+			try {
+				conexao.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return resultado;
 	}
 
 	public Endereco consultarById(int id) {

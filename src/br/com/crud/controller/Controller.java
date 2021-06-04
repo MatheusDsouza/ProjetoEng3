@@ -57,7 +57,6 @@ public class Controller extends HttpServlet{
         ICommand command = cmd.get(operacao);
 
         EntidadeDominio ent = vh.getEntidade(request);
-
         resultado = command.executar(ent);
 
         vh.setView(resultado, request, response);

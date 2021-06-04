@@ -16,6 +16,11 @@
 		<servlet-name>Controller</servlet-name>
 		<servlet-class>br.com.crud.controller.Controller</servlet-class>
 	</servlet>
+	
+	<servlet>
+		<servlet-name>FormEditarAluno</servlet-name>
+		<servlet-class>br.com.crud.controller.ServletEditarAluno</servlet-class>
+	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>Controller</servlet-name>
@@ -35,5 +40,10 @@
 	<servlet-mapping>
 		<servlet-name>Controller</servlet-name>
 		<url-pattern>/ExcluirAluno</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>FormEditarAluno</servlet-name>
+		<url-pattern>/FormEditarAluno</url-pattern>
 	</servlet-mapping>
 </web-app>

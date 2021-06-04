@@ -2,11 +2,13 @@ package br.com.crud.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import br.com.crud.model.Aluno;
 import br.com.crud.model.EntidadeDominio;
 import br.com.crud.model.Resultado;
+import br.com.crud.model.Turma;
 import br.com.crud.util.Conexao;
 
 public abstract class AbstractDao implements IDAO {
@@ -58,6 +60,8 @@ public abstract class AbstractDao implements IDAO {
 		return resultado;
 	}
 
+	
+	
 	protected void abrirConexao() {
 
 		try {

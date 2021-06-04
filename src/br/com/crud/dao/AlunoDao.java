@@ -10,6 +10,7 @@ import br.com.crud.model.Aluno;
 import br.com.crud.model.Endereco;
 import br.com.crud.model.EntidadeDominio;
 import br.com.crud.model.Resultado;
+import br.com.crud.model.Turma;
 
 public class AlunoDao extends AbstractDao {
 
@@ -149,18 +150,21 @@ public class AlunoDao extends AbstractDao {
 
 		Resultado resultado = new Resultado();
 		Aluno aluno = (Aluno) ent;
+		
+		Endereco end;
+		EnderecoDao endDao = new EnderecoDao();
 
 		PreparedStatement pst = null;
 		StringBuilder sql = new StringBuilder();
-
+		endDao.editar(aluno.getEndereco()).getResultado();
+		
 		sql.append("UPDATE " + nomeTabela + " SET ");
 		sql.append("ALN_RA=?, ");
 		sql.append("ALN_NOME=?, ");
-		sql.append("ALN_CUR_ID=?, ");
+		sql.append("ALN_TUR_ID=?, ");
 		sql.append("ALN_NOMEPAI=?, ");
 		sql.append("ALN_NOMEMAE=?, ");
-		sql.append("ALN_TELEFONE=?,");
-		sql.append(" ALN_ID_END=? ");
+		sql.append("ALN_TELEFONE=? ");
 		sql.append("WHERE " + idTable + " = " + aluno.getId() + ";");
 
 		try {
@@ -172,9 +176,11 @@ public class AlunoDao extends AbstractDao {
 			pst.setString(4, aluno.getNomePai());
 			pst.setString(5, aluno.getNomeMae());
 			pst.setString(6, aluno.getTelefone());
-			pst.setInt(7, aluno.getEndereco().getId());
-
+			
+			System.out.println(pst.toString());
 			pst.executeUpdate();
+			
+			conexao.commit();
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -192,6 +198,66 @@ public class AlunoDao extends AbstractDao {
 		}
 
 		return resultado;
+	}
+	
+public Aluno consultarById(int id) {
+	
+		abrirConexao();
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		Aluno aluno= new Aluno();
+		TurmaDao tDao = new TurmaDao();
+		EnderecoDao eDao = new EnderecoDao();
+		int idTurma = 0;
+		int idEnd = 0;
+
+		String sql = "SELECT * FROM " + nomeTabela + " WHERE " + idTable + " = " + id;
+		try {
+			pst = conexao.prepareStatement(sql);
+
+			rs = pst.executeQuery();
+			
+			while (rs.next()) {
+				
+				aluno.setId(rs.getInt("aln_id"));
+				aluno.setRa(rs.getString("aln_ra"));
+				aluno.setNome(rs.getString("aln_nome"));
+				aluno.setNomeMae(rs.getString("aln_nomemae"));
+				aluno.setNomePai(rs.getString("aln_nomepai"));
+				aluno.setTelefone(rs.getString("aln_telefone"));
+
+				idTurma = rs.getInt("aln_tur_id");
+				aluno.setTurma(tDao.consultarById(idTurma));
+
+				idEnd = rs.getInt("aln_end_id");
+				aluno.setEndereco(eDao.consultarById(idEnd));
+
+				
+			}
+
+			conexao.commit();
+		} catch (SQLException e) {
+			try {
+				conexao.rollback();
+				e.printStackTrace();
+			} catch (SQLException e2) {
+				e2.printStackTrace();
+			}
+			
+		} finally {
+			try {
+				pst.close();
+				if (ctrlTransacao == true) {
+					conexao.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return aluno;
+		
+		
 	}
 
 }

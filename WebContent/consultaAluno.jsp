@@ -41,8 +41,9 @@
                                 <c:forEach items="${alunos}" var="aluno" end="${alunos.size() - 2}">
                                     <tr>
                                         <td>
-                                            <form method="GET" action="EditarAluno">
-                                                <button type="button" class="btn btn-outline-warning">
+                                            <form method="GET" action="FormEditarAluno">
+                                            	<input type="hidden" id="idAluno" name="idAluno" value="${aluno.getId()}">
+                                                <button type="submit" id="REDIRECIONAMENTO" name="REDIRECIONAMENTO" class="btn btn-outline-warning">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square"
                                                         viewBox="0 0 16 16">
                                                         <path
