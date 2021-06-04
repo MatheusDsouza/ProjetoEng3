@@ -14,6 +14,7 @@
     
     <body>
 
+        <br/>
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-6">
@@ -21,17 +22,17 @@
                     <form action="SalvarAluno" method="POST">
 
                         <div class="form-group">
-                            <label>RA</label>
+                            <label class="mb-1 mt-2">RA</label>
                             <input type="text" class="form-control" id="raAluno" name="raAluno" placeholder="RA do Aluno" required="true">
                         </div>
 
                         <div class="form-group">
-                            <label>Nome</label>
+                            <label class="mb-1 mt-2">Nome</label>
                             <input type="text" class="form-control" id="nomeAluno" name="nomeAluno" placeholder="Nome do Aluno" required="true">
                         </div>
 
                         <div class="form-group">
-                            <label>Turma</label>
+                            <label class="mb-1 mt-2">Turma</label>
                             <br />
                             <select class="custom-select" id="turmaAluno" name="turmaAluno" required="true">
                                 <option selected>Selecione a turma do Aluno</option>
@@ -46,42 +47,53 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Pai do Aluno</label>
+                            <label class="mb-1 mt-2">Pai do Aluno</label>
                             <input type="text" class="form-control" id="paiAluno" name="paiAluno" placeholder="Nome do Pai do Aluno" required="true">
                         </div>
 
                         <div class="form-group">
-                            <label>Mãe do Aluno</label>
+                            <label class="mb-1 mt-2">Mãe do Aluno</label>
                             <input type="text" class="form-control" id="maeAluno" name="maeAluno" placeholder="Nome da Mãe do Aluno" required="true">
                         </div>
 
                         <div class="form-group">
-                            <label>Telefone</label>
+                            <label class="mb-1 mt-2">Telefone</label>
                             <input type="text" class="form-control" id="telefoneAluno" name="telefoneAluno" placeholder="Telefone do Aluno" required="true">
                         </div>
 
                         <div class="form-group">
-                            <label>CEP</label>
+                            <label class="mb-1 mt-2">CEP</label>
                             <input type="text" class="form-control" id="cepAluno" name="cepAluno" placeholder="CEP do Aluno" required="true">
                         </div>
 
                         <div class="form-group">
-                            <label>Logradouro</label>
+                            <label class="mb-1 mt-2">Logradouro</label>
                             <input type="text" class="form-control" id="logradouroAluno" name="logradouroAluno"
                                 placeholder="Logradouro do Aluno" required="true">
                         </div>
 
                         <div class="form-group">
-                            <label>Cidade</label>
+                            <label class="mb-1 mt-2">Cidade</label>
                             <input type="text" class="form-control" id="cidadeAluno" name="cidadeAluno" placeholder="Cidade do Aluno" required="true">
                         </div>
 
                         <div class="form-group">
-                            <label>Estado</label>
+                            <label class="mb-1 mt-2">Estado</label>
                             <input required="true" type="text" class="form-control" id="estadoAluno" name="estadoAluno" placeholder="Estado do Aluno">
                         </div>
+                        <br/>
+                        <div class="row justify-content-between">
+                        
+                            <div class="col-4">
+                                <a href="index.html" class="btn btn-outline-danger">Voltar</a>
+                            </div>
+                        
+                            <div class="col-3">
+                                <button id="OPERACAO" name="OPERACAO" value="SALVAR" type="submit" class="btn btn-primary">Cadastrar Aluno</button>
+                            </div>
 
-                        <button id="OPERACAO" name="OPERACAO" value="SALVAR" type="submit" class="btn btn-primary">Cadastrar Aluno</button>
+                        </div>
+
                     </form>
 
                 </div>

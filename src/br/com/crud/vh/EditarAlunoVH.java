@@ -31,7 +31,6 @@ public class EditarAlunoVH implements IViewHelper {
 			throws IOException, ServletException {
 		
 		RequestDispatcher rd = request.getRequestDispatcher("index.html");
-		
 		rd.forward(request, response);
 
 	}
