@@ -13,7 +13,10 @@ import br.com.crud.model.Endereco;
 import br.com.crud.model.EntidadeDominio;
 import br.com.crud.model.Resultado;
 import br.com.crud.strategy.IStrategy;
-import br.com.crud.strategy.ValidacaoAluno;
+import br.com.crud.strategy.ValidadorCadastroAluno;
+import br.com.crud.strategy.ValidadorExistencia;
+import br.com.crud.strategy.ValidadorQuantidadeTurma;
+import br.com.crud.strategy.ValidadorRa;
 
 public class Fachada implements IFachada {
 
@@ -35,12 +38,12 @@ public class Fachada implements IFachada {
 
 		// CRIA LISTAS PARA REGRAS DE CADA DOMINIO
 		List<IStrategy> rngAluno = new ArrayList<IStrategy>();
-
-		IStrategy validar = new ValidacaoAluno();
-
 		
 
-		rngAluno.add(validar);
+		rngAluno.add(new ValidadorCadastroAluno());
+		rngAluno.add(new ValidadorExistencia());
+		rngAluno.add(new ValidadorQuantidadeTurma());
+		rngAluno.add(new ValidadorRa());
 
 		// ADICIONA AS REGRAS DE NEG�CIO NO MAP CORRESPONDENTE
 		regrasNegocio.put(Aluno.class.getName(), rngAluno);
@@ -80,34 +83,12 @@ public class Fachada implements IFachada {
 
 	@Override
 	public Resultado consultar(EntidadeDominio ent) {
-
-		System.out.println("-FACHADA CONSULTAR");
 		resultado = new Resultado();
+		
 		nomeClasse = ent.getClass().getName();
-		System.out.println("-Nome da Classe da entidade: " + nomeClasse);
-		rng = regrasNegocio.get(nomeClasse);
-		msgErro.setLength(0);
-
-		executarRegras(rng, ent);
-
-		if (msgErro.length() == 0 || msgErro.toString().trim().equals("")) {
-			try {
-				dao = daos.get(nomeClasse);
-				System.out.println("-CHAMANDO METODO DAO DE CONSULTAR");
-				resultado = dao.consultar(ent);
-				resultado.add(ent);
-				System.out.println("- PRONTO, DEU DE CONSULTAR O OBJETO");
-			} catch (Exception e) {
-				e.printStackTrace();			
-				resultado.setMensagens("-VOLTOU PRA FACHADA DANDO ERRO");
-
-			}
-		} else {
-
-			resultado.add(ent);
-			resultado.setMensagens(msgErro.toString());
-		}
-
+		dao = daos.get(nomeClasse);
+	    resultado = dao.consultar(ent);
+	    resultado.add(ent);
 		return resultado;
 	}
 

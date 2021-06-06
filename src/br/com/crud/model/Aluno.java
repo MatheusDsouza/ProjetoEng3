@@ -5,7 +5,7 @@ public class Aluno extends Pessoa{
 	private Turma turma;
 	private String nomePai;
 	private String nomeMae;
-	
+	private int idade;
 	
 	public String getRa() {
 		return ra;
@@ -30,6 +30,12 @@ public class Aluno extends Pessoa{
 	}
 	public void setNomeMae(String nomeMae) {
 		this.nomeMae = nomeMae;
+	}
+	public int getIdade() {
+		return idade;
+	}
+	public void setIdade(int idade) {
+		this.idade = idade;
 	}
 
 	

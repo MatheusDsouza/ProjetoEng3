@@ -4,6 +4,9 @@ public class Turma extends EntidadeDominio {
 	private String turma;
 	private Professor professor;
 	private String turno; 
+	private int idade;
+	
+	
 	public String getTurma() {
 		return turma;
 	}
@@ -21,6 +24,12 @@ public class Turma extends EntidadeDominio {
 	}
 	public void setTurno(String turno) {
 		this.turno = turno;
+	}
+	public int getIdade() {
+		return idade;
+	}
+	public void setIdade(int idade) {
+		this.idade = idade;
 	}
 	
 	

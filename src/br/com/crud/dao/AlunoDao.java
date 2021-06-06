@@ -260,4 +260,70 @@ public Aluno consultarById(int id) {
 		
 	}
 
+
+public Resultado consultarTurmas(EntidadeDominio ent) {
+	abrirConexao();
+
+	Resultado resultado = new Resultado();
+	PreparedStatement pst = null;
+	ResultSet rs = null;
+	List<EntidadeDominio> alunos = new ArrayList<EntidadeDominio>();
+	int idTurma = ((Aluno) ent).getTurma().getId();
+	
+	String sql = "SELECT * FROM alunos WHERE aln_tur_id=" + idTurma;
+
+	try {
+
+		pst = conexao.prepareStatement(sql);
+
+		rs = pst.executeQuery();
+		TurmaDao tDao = new TurmaDao();
+		EnderecoDao eDao = new EnderecoDao();
+		int idEnd = 0;
+		int i = 1;
+
+		while (rs.next()) {
+
+			Aluno aluno = new Aluno();
+			aluno.setId(rs.getInt("aln_id"));
+			aluno.setRa(rs.getString("aln_ra"));
+			aluno.setNome(rs.getString("aln_nome"));
+			aluno.setNomeMae(rs.getString("aln_nomemae"));
+			aluno.setNomePai(rs.getString("aln_nomepai"));
+			aluno.setTelefone(rs.getString("aln_telefone"));
+
+			aluno.setTurma(tDao.consultarById(idTurma));
+
+			idEnd = rs.getInt("aln_end_id");
+			aluno.setEndereco(eDao.consultarById(idEnd));
+			
+			alunos.add(aluno);
+			
+		}
+		
+		conexao.commit();
+
+	} catch (SQLException e) {
+		try {
+			conexao.rollback();
+			e.printStackTrace();
+		} catch (SQLException e2) {
+			e2.printStackTrace();
+		}
+
+	} finally {
+		try {
+			pst.close();
+			if (ctrlTransacao == true) {
+				conexao.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	resultado.setResultados(alunos);
+	return resultado;
+}
+
 }
