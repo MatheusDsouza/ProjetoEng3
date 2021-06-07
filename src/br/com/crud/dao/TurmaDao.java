@@ -56,6 +56,7 @@ public class TurmaDao{
 				turma.setId(rs.getInt("tur_id"));
 				turma.setProfessor(dao.consultarById(rs.getInt("tur_pro_id")));
 				turma.setTurma(rs.getString("tur_turma"));
+				turma.setIdade(Integer.parseInt(rs.getString("tur_idade")));
 				turma.setTurno(rs.getString("tur_turno"));
 				turmas.add(turma);
 				
@@ -110,6 +111,7 @@ public class TurmaDao{
 				turma.setId(rs.getInt("tur_id"));
 				turma.setProfessor(dao.consultarById(rs.getInt("tur_pro_id")));
 				turma.setTurma(rs.getString("tur_turma"));
+				turma.setIdade(Integer.parseInt(rs.getString("tur_idade")));
 				turma.setTurno(rs.getString("tur_turno"));
 				
 			}

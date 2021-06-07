@@ -27,7 +27,7 @@ public class ValidadorCadastroAluno implements IStrategy {
 			//Validador Aluno
 			if(isEmpty(nome))
 				sb.append("Insira o nome do aluno\n");
-
+			
 			if(isEmpty(ra))
 				sb.append("Insira o RA do aluno\n");
 			

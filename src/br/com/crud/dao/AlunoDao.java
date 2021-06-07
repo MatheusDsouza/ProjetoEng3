@@ -31,8 +31,8 @@ public class AlunoDao extends AbstractDao {
 		end = (Endereco) endDao.salvar(aln.getEndereco()).getResultado();
 		String sql;
 		sql = "INSERT INTO " + nomeTabela
-				+ "(ALN_RA, ALN_NOME, ALN_TUR_ID, ALN_NOMEPAI, ALN_NOMEMAE, ALN_TELEFONE, ALN_END_ID)"
-				+ "VALUES (?,?,?,?,?,?,?)";
+				+ "(ALN_RA, ALN_NOME, ALN_TUR_ID, ALN_NOMEPAI, ALN_NOMEMAE, ALN_TELEFONE, ALN_END_ID, ALN_IDADE)"
+				+ "VALUES (?,?,?,?,?,?,?,?)";
 
 		try {
 
@@ -46,6 +46,7 @@ public class AlunoDao extends AbstractDao {
 			pst.setString(5, aln.getNomeMae());
 			pst.setString(6, aln.getTelefone());
 			pst.setInt(7, end.getId());
+			pst.setInt(8, aln.getIdade());
 
 			pst.executeUpdate();
 
@@ -107,7 +108,7 @@ public class AlunoDao extends AbstractDao {
 				aluno.setNomeMae(rs.getString("aln_nomemae"));
 				aluno.setNomePai(rs.getString("aln_nomepai"));
 				aluno.setTelefone(rs.getString("aln_telefone"));
-
+				aluno.setIdade(rs.getInt("aln_idade"));
 				idTurma = rs.getInt("aln_tur_id");
 				aluno.setTurma(tDao.consultarById(idTurma));
 
@@ -151,7 +152,6 @@ public class AlunoDao extends AbstractDao {
 		Resultado resultado = new Resultado();
 		Aluno aluno = (Aluno) ent;
 		
-		Endereco end;
 		EnderecoDao endDao = new EnderecoDao();
 
 		PreparedStatement pst = null;
@@ -164,7 +164,8 @@ public class AlunoDao extends AbstractDao {
 		sql.append("ALN_TUR_ID=?, ");
 		sql.append("ALN_NOMEPAI=?, ");
 		sql.append("ALN_NOMEMAE=?, ");
-		sql.append("ALN_TELEFONE=? ");
+		sql.append("ALN_TELEFONE=?, ");
+		sql.append("ALN_IDADE=? ");
 		sql.append("WHERE " + idTable + " = " + aluno.getId() + ";");
 
 		try {
@@ -176,11 +177,13 @@ public class AlunoDao extends AbstractDao {
 			pst.setString(4, aluno.getNomePai());
 			pst.setString(5, aluno.getNomeMae());
 			pst.setString(6, aluno.getTelefone());
-			
+			pst.setInt(7, aluno.getIdade());
 			System.out.println(pst.toString());
 			pst.executeUpdate();
 			
 			conexao.commit();
+			
+			resultado.setResultado(aluno);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -225,7 +228,7 @@ public Aluno consultarById(int id) {
 				aluno.setNomeMae(rs.getString("aln_nomemae"));
 				aluno.setNomePai(rs.getString("aln_nomepai"));
 				aluno.setTelefone(rs.getString("aln_telefone"));
-
+				aluno.setIdade(rs.getInt("aln_idade"));
 				idTurma = rs.getInt("aln_tur_id");
 				aluno.setTurma(tDao.consultarById(idTurma));
 
@@ -280,7 +283,6 @@ public Resultado consultarTurmas(EntidadeDominio ent) {
 		TurmaDao tDao = new TurmaDao();
 		EnderecoDao eDao = new EnderecoDao();
 		int idEnd = 0;
-		int i = 1;
 
 		while (rs.next()) {
 
@@ -291,7 +293,7 @@ public Resultado consultarTurmas(EntidadeDominio ent) {
 			aluno.setNomeMae(rs.getString("aln_nomemae"));
 			aluno.setNomePai(rs.getString("aln_nomepai"));
 			aluno.setTelefone(rs.getString("aln_telefone"));
-
+			aluno.setIdade(Integer.parseInt(rs.getString("aln_idade")));
 			aluno.setTurma(tDao.consultarById(idTurma));
 
 			idEnd = rs.getInt("aln_end_id");

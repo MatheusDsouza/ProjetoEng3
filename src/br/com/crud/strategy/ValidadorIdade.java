@@ -5,7 +5,7 @@ import br.com.crud.model.Aluno;
 import br.com.crud.model.EntidadeDominio;
 import br.com.crud.model.Turma;
 
-public class ValidadorIdadeTurma implements IStrategy {
+public class ValidadorIdade implements IStrategy {
 
 	@Override
 	public String processar(EntidadeDominio ent) {

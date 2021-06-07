@@ -1,5 +1,6 @@
 <%@page import="br.com.crud.model.Turma"%>
 <%@page import="br.com.crud.dao.TurmaDao"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <!DOCTYPE html>
     <html lang="en">
@@ -19,6 +20,12 @@
             <div class="row justify-content-center">
                 <div class="col-6">
 
+					<h1>Cadastrar Novo Aluno</h1><br/>
+					<div class="text-danger">
+						<c:if test="${not empty mensagem}">
+					    	<c:out value="${mensagem}"/>
+						</c:if>
+					</div>
                     <form action="SalvarAluno" method="POST">
 
                         <div class="form-group">
@@ -60,6 +67,11 @@
                             <label class="mb-1 mt-2">Telefone</label>
                             <input type="text" class="form-control" id="telefoneAluno" name="telefoneAluno" placeholder="Telefone do Aluno" required="true">
                         </div>
+                        
+                        <div class="form-group">
+                            <label class="mb-1 mt-2">Idade</label>
+                            <input type="text" class="form-control" id="idadeAluno" name="idadeAluno" placeholder="Idade do Aluno" required="true">
+                        </div>
 
                         <div class="form-group">
                             <label class="mb-1 mt-2">CEP</label>
@@ -85,7 +97,7 @@
                         <div class="row justify-content-between">
                         
                             <div class="col-4">
-                                <a href="index.html" class="btn btn-outline-danger">Voltar</a>
+                                <a href="ConsultarAluno?OPERACAO=CONSULTAR" class="btn btn-outline-danger">Voltar</a>
                             </div>
                         
                             <div class="col-3">

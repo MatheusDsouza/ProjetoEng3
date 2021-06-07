@@ -30,8 +30,19 @@ public class EditarAlunoVH implements IViewHelper {
 	public void setView(Resultado resultado, HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
 		
-		RequestDispatcher rd = request.getRequestDispatcher("index.html");
-		rd.forward(request, response);
+		RequestDispatcher rd;
+		
+		if(resultado.getMensagens() == null || resultado.getMensagens().isBlank() || resultado.getMensagens().isEmpty()) {
+			resultado.setMensagens("Salvo com sucesso!");
+			rd = request.getRequestDispatcher("ConsultarAluno?OPERACAO=CONSULTAR");
+		} else {
+			resultado.setMensagens(resultado.getMensagens().replaceAll("\n", " | "));
+			request.setAttribute("aluno", resultado.getResultado());
+			rd = request.getRequestDispatcher("editarAluno.jsp");
+			
+		}
+			request.setAttribute("mensagem", resultado.getMensagens());
+			rd.forward(request, response);
 
 	}
 	
@@ -47,10 +58,14 @@ public class EditarAlunoVH implements IViewHelper {
 		String paiAluno = request.getParameter("paiAluno");
 		String maeAluno = request.getParameter("maeAluno");
 		String telefoneAluno = request.getParameter("telefoneAluno");
+		
+		int idadeAluno = Integer.parseInt(request.getParameter("idadeAluno"));
+		
 		String cepAluno = request.getParameter("cepAluno");
 		String logradouroAluno = request.getParameter("logradouroAluno");
 		String cidadeAluno = request.getParameter("cidadeAluno");
 		String estadoAluno = request.getParameter("estadoAluno");
+
 		
 		Endereco endereco = new Endereco();
 		Cidade cidade = new Cidade();
@@ -68,6 +83,8 @@ public class EditarAlunoVH implements IViewHelper {
 		aluno.setNomePai(paiAluno);
 		aluno.setNomeMae(maeAluno);
 		aluno.setTelefone(telefoneAluno);
+		
+		aluno.setIdade(idadeAluno);
 		
 		endereco.setId(Integer.parseInt(idEndereco));
 		

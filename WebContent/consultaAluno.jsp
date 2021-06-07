@@ -12,11 +12,32 @@
         </head>
 
         <body>
-
+        
+	        <c:if test="${not empty mensagem}">
+			    <script>
+				       alert("${mensagem}");
+				</script>
+			</c:if>
+			
+			
+		        
+        
             <br />
             <div class="container">
                 <div class="row justify-content-center">
+                
                     <div class="col-flex">
+                    
+                    <h1>Consulta de Alunos</h1><br/>
+                    
+                    <div class="row justify-content-left">
+	                    <div class="col-1">
+	               			 <a href="index.html" class="btn btn-outline-danger">Voltar</a>
+			            </div>
+	                    <div class="col-1">
+	               			 <a href="cadAluno.jsp" class="btn btn-primary">Adicionar</a>
+			            </div>
+		            </div>
 
                         <table class="table">
 
@@ -30,10 +51,12 @@
                                     <th scope="col">Professor da Turma</th>
                                     <th scope="col">Nome do Pai</th>
                                     <th scope="col">Nome da Mãe</th>
+                                    <th scope="col">Idade</th>
+                                    <th scope="col">Telefone</th>
                                     <th scope="col">Rua</th>
                                     <th scope="col">Cidade</th>
                                     <th scope="col">Estado</th>
-                                    <th scope="col">Telefone</th>
+                                    
                                 </tr>
                             </thead>
 
@@ -79,10 +102,12 @@
                                         <td><c:out value="${aluno.getTurma().getProfessor().getNome()}" /></td>
                                         <td><c:out value="${aluno.getNomePai()}" /></td>
                                         <td><c:out value="${aluno.getNomeMae()}" /></td>
+                                        <td><c:out value="${aluno.getIdade()}" /></td>
+                                        <td><c:out value="${aluno.getTelefone()}" /></td>
                                         <td><c:out value="${aluno.getEndereco().getLogradouro()}" /></td>
                                         <td><c:out value="${aluno.getEndereco().getCidade().getCidade()}" /></td>
                                         <td><c:out value="${aluno.getEndereco().getCidade().getEstado().getUf()}" /></td>
-                                        <td><c:out value="${aluno.getTelefone()}" /></td>
+                                        
                                     </tr>
                                 </c:forEach>
                             </tbody>

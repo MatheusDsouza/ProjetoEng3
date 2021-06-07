@@ -15,6 +15,7 @@ import br.com.crud.model.Resultado;
 import br.com.crud.strategy.IStrategy;
 import br.com.crud.strategy.ValidadorCadastroAluno;
 import br.com.crud.strategy.ValidadorExistencia;
+import br.com.crud.strategy.ValidadorIdade;
 import br.com.crud.strategy.ValidadorQuantidadeTurma;
 import br.com.crud.strategy.ValidadorRa;
 
@@ -44,6 +45,7 @@ public class Fachada implements IFachada {
 		rngAluno.add(new ValidadorExistencia());
 		rngAluno.add(new ValidadorQuantidadeTurma());
 		rngAluno.add(new ValidadorRa());
+		rngAluno.add(new ValidadorIdade());
 
 		// ADICIONA AS REGRAS DE NEG�CIO NO MAP CORRESPONDENTE
 		regrasNegocio.put(Aluno.class.getName(), rngAluno);
@@ -117,7 +119,7 @@ public class Fachada implements IFachada {
 
 			}
 		} else {
-
+			resultado.setResultado(ent);
 			resultado.add(ent);
 			resultado.setMensagens(msgErro.toString());
 		}

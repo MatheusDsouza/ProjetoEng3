@@ -15,7 +15,7 @@ public class ValidadorExistencia implements IStrategy {
 		List<EntidadeDominio> alunos = dao.consultar(ent).getResultados();
 		
 		for (EntidadeDominio aluno : alunos) {
-			if(((Aluno) aluno).getRa().equals(((Aluno) ent).getRa())) 
+			if(aluno.getId() != ent.getId() && ((Aluno) aluno).getRa().equals(((Aluno) ent).getRa())) 
 				return "O RA " + ((Aluno) ent).getRa() + " já está cadastrado";	
 		}
 		return null;

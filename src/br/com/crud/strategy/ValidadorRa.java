@@ -11,6 +11,12 @@ public class ValidadorRa implements IStrategy {
 	public String processar(EntidadeDominio ent) {
 		if(((Aluno) ent).getRa().length() > MAX_RA) 
 			return "O RA não pode conter mais que " + MAX_RA + " dígitos";	
+		
+		try {  
+		    Double.parseDouble(((Aluno) ent).getRa());  
+		  } catch(NumberFormatException e){  
+		    return "O RA só pode conter números";  
+		  } 
 		return null;
 	}
 

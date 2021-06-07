@@ -6,6 +6,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import br.com.crud.model.Aluno;
 import br.com.crud.model.EntidadeDominio;
 import br.com.crud.model.Resultado;
@@ -23,7 +24,9 @@ public class ExcluirAlunoVH implements IViewHelper {
 	public void setView(Resultado resultado, HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
 			
-		RequestDispatcher rd = request.getRequestDispatcher("index.html");
+		RequestDispatcher rd = request.getRequestDispatcher("ConsultarAluno?OPERACAO=CONSULTAR");
+		request.setAttribute("mensagem","Excluído com sucesso!");	
+		
 		rd.forward(request, response);
 
 	}

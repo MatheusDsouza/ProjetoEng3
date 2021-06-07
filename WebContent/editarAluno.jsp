@@ -18,7 +18,13 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-6">
-                    <br/>
+                	
+					<div class="text-danger">
+						<c:if test="${not empty mensagem}">
+					    	<c:out value="${mensagem}"/>
+						</c:if>
+					</div>
+                	<h1>Editar Aluno</h1><br/>
                     <form action="EditarAluno" method="POST">
 						<input type="hidden" id="idAluno" name="idAluno" value="${aluno.getId()}">
 						<input type="hidden" id="idEndereco" name="idEndereco" value="${aluno.getEndereco().getId()}">
@@ -36,7 +42,7 @@
                             <label class="mb-1 mt-2">Turma</label>
                             <br />
                             <select class="custom-select" id="turmaAluno" name="turmaAluno" required="true">
-                                <option selected >${aluno.getTurma().getTurma()}</option>
+                                <option selected value="${aluno.getTurma().getId()}">${aluno.getTurma().getTurma()}</option>
                                 <%
                                 	TurmaDao turma = new TurmaDao();
                                 	for (Turma t: turma.consultar()) {
@@ -61,7 +67,10 @@
                             <label class="mb-1 mt-2">Telefone</label>
                             <input type="text" class="form-control" id="telefoneAluno" name="telefoneAluno" value="${aluno.getTelefone()}" required="true">
                         </div>
-
+						<div class="form-group">
+                            <label class="mb-1 mt-2">Idade</label>
+                            <input required="true" type="text" class="form-control" id="idadeAluno" name="idadeAluno" value="${aluno.getIdade()}">
+                        </div>
                         <div class="form-group">
                             <label class="mb-1 mt-2">CEP</label>
                             <input type="text" class="form-control" id="cepAluno" name="cepAluno" value="${aluno.getEndereco().getCep()}" required="true">
@@ -83,16 +92,19 @@
                             <input required="true" type="text" class="form-control" id="estadoAluno" name="estadoAluno" value="${aluno.getEndereco().getCidade().getEstado().getUf()}">
                         </div>
                         <br/>
-                        <button id="OPERACAO" name="OPERACAO" value="EDITAR" type="submit" class="btn btn-primary">Editar Aluno</button>
+                        <div class="row justify-content-between">
+		                    <div class="col-1">
+		               			 <a href="ConsultarAluno?OPERACAO=CONSULTAR" class="btn btn-outline-danger">Voltar</a>
+				            </div>
+				            <div class="col-1">
+	                        	<button id="OPERACAO" name="OPERACAO" value="EDITAR" type="submit" class="btn btn-primary">Editar Aluno</button>
+	                    	</div>
+                    	</div>
                     </form>
 
                 </div>
             </div>
         </div>
-
-
-
-
         <script type="javascript" src="assets/js/bootstrap.min.js"></script>
     </body>
 
