@@ -42,7 +42,7 @@
                             <label class="mb-1 mt-2">Turma</label>
                             <br />
                             <select class="custom-select" id="turmaAluno" name="turmaAluno" required="true">
-                                <option selected>Selecione a turma do Aluno</option>
+                                <option selected value="">Selecione a turma do Aluno</option>
                                 <%
                                 	TurmaDao turma = new TurmaDao();
                                 	for (Turma t: turma.consultar()) {
@@ -70,7 +70,7 @@
                         
                         <div class="form-group">
                             <label class="mb-1 mt-2">Idade</label>
-                            <input type="text" class="form-control" id="idadeAluno" name="idadeAluno" placeholder="Idade do Aluno" required="true">
+                            <input type="number" class="form-control" id="idadeAluno" name="idadeAluno" placeholder="Idade do Aluno" required="true" min="0" step="1" >
                         </div>
 
                         <div class="form-group">

@@ -12,13 +12,8 @@
         </head>
 
         <body>
-        
-	        <c:if test="${not empty mensagem}">
-			    <script>
-				       alert("${mensagem}");
-				</script>
-			</c:if>
-			
+        	
+        	
 			
 		        
         
@@ -29,6 +24,12 @@
                     <div class="col-flex">
                     
                     <h1>Consulta de Alunos</h1><br/>
+                    
+                    <div class="text-success">
+				        <c:if test="${not empty mensagem}">
+						    <c:out value="${mensagem}"></c:out>
+						</c:if>
+					</div>
                     
                     <div class="row justify-content-left">
 	                    <div class="col-1">

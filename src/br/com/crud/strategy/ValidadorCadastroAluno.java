@@ -22,6 +22,7 @@ public class ValidadorCadastroAluno implements IStrategy {
 			String cidade = endereco.getCidade().getCidade();
 			String estado = endereco.getCidade().getEstado().getUf();
 			
+			String turma = aluno.getTurma().getTurma();			
 			StringBuilder sb = new StringBuilder();
 			
 			//Validador Aluno
@@ -49,6 +50,9 @@ public class ValidadorCadastroAluno implements IStrategy {
 			
 			if(isEmpty(estado))
 				sb.append("Insira o estado\n");
+			
+			if(isEmpty(turma))
+				sb.append("Selecione uma turma\n");
 						
 			if(sb.length() > 0) {
 				return sb.toString();

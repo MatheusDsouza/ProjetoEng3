@@ -33,7 +33,7 @@ public class EditarAlunoVH implements IViewHelper {
 		RequestDispatcher rd;
 		
 		if(resultado.getMensagens() == null || resultado.getMensagens().isBlank() || resultado.getMensagens().isEmpty()) {
-			resultado.setMensagens("Salvo com sucesso!");
+			resultado.setMensagens("Editado com sucesso!");
 			rd = request.getRequestDispatcher("ConsultarAluno?OPERACAO=CONSULTAR");
 		} else {
 			resultado.setMensagens(resultado.getMensagens().replaceAll("\n", " | "));

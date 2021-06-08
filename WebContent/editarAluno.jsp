@@ -19,12 +19,15 @@
             <div class="row justify-content-center">
                 <div class="col-6">
                 	
-					<div class="text-danger">
+					
+                	<h1>Editar Aluno</h1>
+                	
+                	<div class="text-danger">
 						<c:if test="${not empty mensagem}">
 					    	<c:out value="${mensagem}"/>
 						</c:if>
 					</div>
-                	<h1>Editar Aluno</h1><br/>
+                	
                     <form action="EditarAluno" method="POST">
 						<input type="hidden" id="idAluno" name="idAluno" value="${aluno.getId()}">
 						<input type="hidden" id="idEndereco" name="idEndereco" value="${aluno.getEndereco().getId()}">
@@ -42,14 +45,17 @@
                             <label class="mb-1 mt-2">Turma</label>
                             <br />
                             <select class="custom-select" id="turmaAluno" name="turmaAluno" required="true">
-                                <option selected value="${aluno.getTurma().getId()}">${aluno.getTurma().getTurma()}</option>
-                                <%
-                                	TurmaDao turma = new TurmaDao();
-                                	for (Turma t: turma.consultar()) {
-                                		
-                                %>
-                                <option value="<%= t.getId()%>"><%= t.getTurma()%></option>
-                                <%} %>
+                             	<c:forEach items="${turmas}" var="turma">
+                             		<c:choose>
+	                             		<c:when test="${turma.getId() == aluno.getTurma().getId()}">
+	                             			<option selected value="${turma.getId()}">${turma.getTurma()}</option>
+	                             		</c:when>
+	                             		<c:otherwise>
+	                             			<option value="${turma.getId()}">${turma.getTurma()}</option>
+	                             		</c:otherwise>
+                             		</c:choose>
+                                </c:forEach>
+                                
                             </select>
                         </div>
 
@@ -69,7 +75,7 @@
                         </div>
 						<div class="form-group">
                             <label class="mb-1 mt-2">Idade</label>
-                            <input required="true" type="text" class="form-control" id="idadeAluno" name="idadeAluno" value="${aluno.getIdade()}">
+                            <input required="true" type="number" class="form-control" id="idadeAluno" name="idadeAluno" value="${aluno.getIdade()}" min="0" step="1" >
                         </div>
                         <div class="form-group">
                             <label class="mb-1 mt-2">CEP</label>
