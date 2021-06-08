@@ -33,7 +33,7 @@
 						<input type="hidden" id="idEndereco" name="idEndereco" value="${aluno.getEndereco().getId()}">
                         <div class="form-group">
                             <label class="mb-1">RA</label>
-                            <input type="text" class="form-control" id="raAluno" name="raAluno" value="${aluno.getRa()}" required="true">
+                            <input type="number" class="form-control" id="raAluno" name="raAluno" value="${aluno.getRa()}" required="true" maxlength="12">
                         </div>
 
                         <div class="form-group">
@@ -75,7 +75,7 @@
                         </div>
 						<div class="form-group">
                             <label class="mb-1 mt-2">Idade</label>
-                            <input required="true" type="number" class="form-control" id="idadeAluno" name="idadeAluno" value="${aluno.getIdade()}" min="0" step="1" >
+                            <input required="true" type="number" class="form-control" id="idadeAluno" name="idadeAluno" value="${aluno.getIdade()}" min="0" step="1" onkeydown="return event.keyCode !== 69">
                         </div>
                         <div class="form-group">
                             <label class="mb-1 mt-2">CEP</label>

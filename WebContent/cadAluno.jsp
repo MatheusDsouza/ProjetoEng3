@@ -30,7 +30,7 @@
 
                         <div class="form-group">
                             <label class="mb-1 mt-2">RA</label>
-                            <input type="text" class="form-control" id="raAluno" name="raAluno" placeholder="RA do Aluno" required="true">
+                            <input type="text" class="form-control" id="raAluno" name="raAluno" placeholder="RA do Aluno" required="true" maxlength="12">
                         </div>
 
                         <div class="form-group">

@@ -62,6 +62,7 @@
                             </thead>
 
                             <tbody>
+                            <c:if test="${alunos.size() > 1 }">
                                 <c:forEach items="${alunos}" var="aluno" end="${alunos.size() - 2}">
                                     <tr>
                                         <td>
@@ -111,6 +112,7 @@
                                         
                                     </tr>
                                 </c:forEach>
+                                </c:if>
                             </tbody>
 
                         </table>
