@@ -11,6 +11,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
         <title>Cadastro de Aluno</title>
+
+        <script >
+            function retornar() {
+                history.go(-1);
+            }
+        </script>
+        
     </head>
     
     <body>
@@ -98,7 +105,7 @@
                         <div class="row justify-content-between">
                         
                             <div class="col-4">
-                                <a href="index.html" class="btn btn-outline-danger">Voltar</a>
+                                <a href="javascript:retornar();" class="btn btn-outline-danger">Voltar</a>
                             </div>
                         
                             <div class="col-3">
