@@ -1,6 +1,7 @@
 package br.com.crud.vh;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,6 +15,7 @@ import br.com.crud.model.Endereco;
 import br.com.crud.model.EntidadeDominio;
 import br.com.crud.model.Estado;
 import br.com.crud.model.Resultado;
+import br.com.crud.model.Turma;
 
 public class EditarAlunoVH implements IViewHelper {
 	
@@ -38,6 +40,11 @@ public class EditarAlunoVH implements IViewHelper {
 		} else {
 			resultado.setMensagens(resultado.getMensagens().replaceAll("\n", " | "));
 			request.setAttribute("aluno", resultado.getResultado());
+			
+			TurmaDao turmaDao = new TurmaDao();
+			List<Turma> turmas = turmaDao.consultar();
+			request.setAttribute("turmas", turmas);
+			
 			rd = request.getRequestDispatcher("editarAluno.jsp");
 			
 		}

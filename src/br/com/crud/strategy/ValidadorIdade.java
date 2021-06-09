@@ -18,6 +18,7 @@ public class ValidadorIdade implements IStrategy {
 		int idadeTurma = turma.getIdade();
 		
 		if(idadeAluno < idadeTurma) {
+			
 			return "A idade mínima para ingressar nesta turma é " + idadeTurma + " anos";
 		}
 		

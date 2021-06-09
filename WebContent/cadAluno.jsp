@@ -93,11 +93,12 @@
                             <label class="mb-1 mt-2">Estado</label>
                             <input required="true" type="text" class="form-control" id="estadoAluno" name="estadoAluno" placeholder="Estado do Aluno">
                         </div>
+                        
                         <br/>
                         <div class="row justify-content-between">
                         
                             <div class="col-4">
-                                <a href="ConsultarAluno?OPERACAO=CONSULTAR" class="btn btn-outline-danger">Voltar</a>
+                                <a href="index.html" class="btn btn-outline-danger">Voltar</a>
                             </div>
                         
                             <div class="col-3">

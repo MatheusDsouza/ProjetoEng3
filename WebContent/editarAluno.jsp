@@ -1,7 +1,7 @@
 <%@page import="br.com.crud.model.Turma"%>
 <%@page import="br.com.crud.dao.TurmaDao"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <!DOCTYPE html>
     <html lang="en">
 
@@ -17,7 +17,7 @@
 
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-6">
+                <div class="col-5">
                 	
 					
                 	<h1>Editar Aluno</h1>
@@ -73,10 +73,12 @@
                             <label class="mb-1 mt-2">Telefone</label>
                             <input type="text" class="form-control" id="telefoneAluno" name="telefoneAluno" value="${aluno.getTelefone()}" required="true" maxlength="11">
                         </div>
+
 						<div class="form-group">
                             <label class="mb-1 mt-2">Idade</label>
                             <input required="true" type="number" class="form-control" id="idadeAluno" name="idadeAluno" value="${aluno.getIdade()}" min="0" step="1" onkeydown="return event.keyCode !== 69">
                         </div>
+
                         <div class="form-group">
                             <label class="mb-1 mt-2">CEP</label>
                             <input type="text" class="form-control" id="cepAluno" name="cepAluno" value="${aluno.getEndereco().getCep()}" required="true">
@@ -97,18 +99,23 @@
                             <label class="mb-1 mt-2">Estado</label>
                             <input required="true" type="text" class="form-control" id="estadoAluno" name="estadoAluno" value="${aluno.getEndereco().getCidade().getEstado().getUf()}">
                         </div>
+
                         <br/>
                         <div class="row justify-content-between">
-		                    <div class="col-1">
+
+		                    <div class="col-4">
 		               			 <a href="ConsultarAluno?OPERACAO=CONSULTAR" class="btn btn-outline-danger">Voltar</a>
 				            </div>
-				            <div class="col-2">
+
+				            <div class="col-3">
 	                        	<button id="OPERACAO" name="OPERACAO" value="EDITAR" type="submit" class="btn btn-primary">Editar Aluno</button>
 	                    	</div>
+
                     	</div>
                     </form>
 
                 </div>
+                
             </div>
         </div>
         <script type="javascript" src="assets/js/bootstrap.min.js"></script>

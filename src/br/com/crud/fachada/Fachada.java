@@ -130,7 +130,7 @@ public class Fachada implements IFachada {
 	@Override
 	public Resultado excluir(EntidadeDominio ent) {
 		
-resultado = new Resultado();
+		resultado = new Resultado();
 		
 		nomeClasse = ent.getClass().getName();
 		dao = daos.get(nomeClasse);
