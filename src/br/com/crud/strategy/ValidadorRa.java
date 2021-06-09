@@ -9,8 +9,8 @@ public class ValidadorRa implements IStrategy {
 	
 	@Override
 	public String processar(EntidadeDominio ent) {
-		if(((Aluno) ent).getRa().length() > MAX_RA) 
-			return "O RA não pode conter mais que " + MAX_RA + " dígitos";	
+		if(((Aluno) ent).getRa().length() != MAX_RA) 
+			return "O RA deve conter " + MAX_RA + " dígitos";	
 		
 		try {  
 		    Double.parseDouble(((Aluno) ent).getRa());  

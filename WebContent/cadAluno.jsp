@@ -65,7 +65,7 @@
 
                         <div class="form-group">
                             <label class="mb-1 mt-2">Telefone</label>
-                            <input type="text" class="form-control" id="telefoneAluno" name="telefoneAluno" placeholder="Telefone do Aluno" required="true">
+                            <input type="text" class="form-control" id="telefoneAluno" name="telefoneAluno" placeholder="Telefone do Aluno" required="true" maxlength="11">
                         </div>
                         
                         <div class="form-group">

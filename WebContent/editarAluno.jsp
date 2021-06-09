@@ -33,7 +33,7 @@
 						<input type="hidden" id="idEndereco" name="idEndereco" value="${aluno.getEndereco().getId()}">
                         <div class="form-group">
                             <label class="mb-1">RA</label>
-                            <input type="number" class="form-control" id="raAluno" name="raAluno" value="${aluno.getRa()}" required="true" maxlength="12">
+                            <input type="text" class="form-control" id="raAluno" name="raAluno" value="${aluno.getRa()}" required="true" maxlength="12">
                         </div>
 
                         <div class="form-group">
@@ -71,7 +71,7 @@
 
                         <div class="form-group">
                             <label class="mb-1 mt-2">Telefone</label>
-                            <input type="text" class="form-control" id="telefoneAluno" name="telefoneAluno" value="${aluno.getTelefone()}" required="true">
+                            <input type="text" class="form-control" id="telefoneAluno" name="telefoneAluno" value="${aluno.getTelefone()}" required="true" maxlength="11">
                         </div>
 						<div class="form-group">
                             <label class="mb-1 mt-2">Idade</label>
@@ -102,7 +102,7 @@
 		                    <div class="col-1">
 		               			 <a href="ConsultarAluno?OPERACAO=CONSULTAR" class="btn btn-outline-danger">Voltar</a>
 				            </div>
-				            <div class="col-1">
+				            <div class="col-2">
 	                        	<button id="OPERACAO" name="OPERACAO" value="EDITAR" type="submit" class="btn btn-primary">Editar Aluno</button>
 	                    	</div>
                     	</div>
