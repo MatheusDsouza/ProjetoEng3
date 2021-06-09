@@ -54,7 +54,7 @@ public class Fachada implements IFachada {
 	@Override
 	public Resultado salvar(EntidadeDominio ent) {
 		
-		System.out.println("-FACHADA SALVAR");
+		
 		resultado = new Resultado();
 		nomeClasse = ent.getClass().getName();
 		System.out.println("-Nome da Classe da entidade: " + nomeClasse);
@@ -66,10 +66,10 @@ public class Fachada implements IFachada {
 		if (msgErro.length() == 0 || msgErro.toString().trim().equals("")) {
 			try {
 				dao = daos.get(nomeClasse);
-				System.out.println("-CHAMANDO METODO DAO DE SALVAR");
+				
 				resultado = dao.salvar(ent);
 				resultado.add(ent);
-				System.out.println("- PRONTO, DEU DE SALVAR O OBJETO");
+				
 			} catch (Exception e) {
 				e.printStackTrace();
 				resultado.setMensagens("-VOLTOU PRA FACHADA DANDO ERRO");
@@ -97,7 +97,7 @@ public class Fachada implements IFachada {
 	@Override
 	public Resultado editar(EntidadeDominio ent) {
 		
-		System.out.println("-FACHADA EDITAR");
+		
 		resultado = new Resultado();
 		nomeClasse = ent.getClass().getName();
 		System.out.println("-Nome da Classe da entidade: " + nomeClasse);
@@ -109,10 +109,10 @@ public class Fachada implements IFachada {
 		if (msgErro.length() == 0 || msgErro.toString().trim().equals("")) {
 			try {
 				dao = daos.get(nomeClasse);
-				System.out.println("-CHAMANDO METODO DAO DE EDITAR");
+				
 				resultado = dao.editar(ent);
 				resultado.add(ent);
-				System.out.println("- PRONTO, DEU DE EDITAR O OBJETO");
+				
 			} catch (Exception e) {
 				e.printStackTrace();
 				resultado.setMensagens("-VOLTOU PRA FACHADA DANDO ERRO");

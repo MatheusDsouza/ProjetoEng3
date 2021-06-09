@@ -81,7 +81,7 @@
 
                         <div class="form-group">
                             <label class="mb-1 mt-2">CEP</label>
-                            <input type="text" class="form-control" id="cepAluno" name="cepAluno" value="${aluno.getEndereco().getCep()}" required="true">
+                            <input type="text" class="form-control" id="cepAluno" name="cepAluno" value="${aluno.getEndereco().getCep()}" required="true" maxlength="8">
                         </div>
 
                         <div class="form-group">

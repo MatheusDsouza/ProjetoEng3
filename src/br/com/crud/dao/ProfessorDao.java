@@ -45,7 +45,7 @@ public class ProfessorDao  {
 
 		try {
 
-			System.out.println("-ENTROU NO DAO DE PROFESSOR PARA FAZER CONSULTA");
+			
 			pst = conexao.prepareStatement(sql);
 
 			rs = pst.executeQuery();
@@ -64,7 +64,7 @@ public class ProfessorDao  {
 
 			conexao.commit();
 
-			System.out.println("-CONSULTA DE PROFESSOR EFETUADA");
+			
 		} catch (SQLException e) {
 			try {
 				conexao.rollback();
@@ -98,7 +98,7 @@ public class ProfessorDao  {
 
 		try {
 
-			System.out.println("-ENTROU NO DAO DE PROFESSOR PARA CONSULTAR POR ID");
+			
 			pst = conexao.prepareStatement(sql);
 
 			rs = pst.executeQuery();
@@ -115,7 +115,7 @@ public class ProfessorDao  {
 
 			conexao.commit();
 
-			System.out.println("-CONSULTA DE PROFESSOR POR ID REALIZADA");
+			
 		} catch (SQLException e) {
 			try {
 				conexao.rollback();

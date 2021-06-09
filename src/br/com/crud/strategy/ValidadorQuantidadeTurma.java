@@ -14,7 +14,7 @@ public class ValidadorQuantidadeTurma implements IStrategy {
 		AlunoDao dao = new AlunoDao();
 		List<EntidadeDominio> alunos = dao.consultarTurmas(ent).getResultados();
 		if(alunos.size() >= MAX_ALUNOS) {
-			System.out.println("TAMANHO TURMA: " + alunos.size());
+		
 			return "O limite de " + MAX_ALUNOS + " de alunos por turma foi excedido";
 		}
 		return null;

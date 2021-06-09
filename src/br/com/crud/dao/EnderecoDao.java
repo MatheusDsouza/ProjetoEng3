@@ -33,7 +33,7 @@ public class EnderecoDao extends AbstractDao {
 
 		try {
 
-			System.out.println("-ENTROU NO DAO DE ENDERECO PARA FAZER O CADASTRO");
+			
 			pst = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
 			pst.setString(1, end.getCep());
@@ -55,7 +55,7 @@ public class EnderecoDao extends AbstractDao {
 			conexao.commit();
 			
 
-			System.out.println("-ENDERECO SALVO NO BANCO");
+			
 		} catch (SQLException e) {
 			try {
 				conexao.rollback();
@@ -110,7 +110,7 @@ public class EnderecoDao extends AbstractDao {
 			pst.setString(3, end.getCidade().getCidade());
 			pst.setString(4, end.getCidade().getEstado().getUf());
 			
-			System.out.println(pst.toString());
+			
 			pst.executeUpdate();
 			
 			conexao.commit();
@@ -144,7 +144,7 @@ public class EnderecoDao extends AbstractDao {
 
 		try {
 
-			System.out.println("-ENTROU NO DAO DE ENDERECOS PARA FAZER CONSULTA POR ID");
+			
 			pst = conexao.prepareStatement(sql);
 
 			rs = pst.executeQuery();
@@ -167,7 +167,7 @@ public class EnderecoDao extends AbstractDao {
 
 			conexao.commit();
 
-			System.out.println("CONSULTA DE ENDERECO POR ID REALIZADA");
+			
 		} catch (SQLException e) {
 			try {
 				conexao.rollback();

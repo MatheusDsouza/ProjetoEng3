@@ -24,10 +24,7 @@ public class ConsultarAlunoVH implements IViewHelper {
 	public void setView(Resultado resultado, HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
 		
-		
-		
 		request.setAttribute("alunos", resultado.getResultados());
-		System.out.println(resultado.getResultados().size());
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/consultaAluno.jsp");
 		

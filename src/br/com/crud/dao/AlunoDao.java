@@ -36,7 +36,6 @@ public class AlunoDao extends AbstractDao {
 
 		try {
 
-			System.out.println("-ENTROU NO DAO DE ALUNO PARA FAZER O CADASTRO");
 			pst = conexao.prepareStatement(sql);
 
 			pst.setString(1, aln.getRa());
@@ -54,7 +53,7 @@ public class AlunoDao extends AbstractDao {
 
 			resultado.setResultado(aln);
 
-			System.out.println("-ALUNO SALVO NO BANCO");
+			
 		} catch (SQLException e) {
 			try {
 				conexao.rollback();

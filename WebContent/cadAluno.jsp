@@ -82,7 +82,7 @@
 
                         <div class="form-group">
                             <label class="mb-1 mt-2">CEP</label>
-                            <input type="text" class="form-control" id="cepAluno" name="cepAluno" placeholder="CEP do Aluno" required="true">
+                            <input type="text" class="form-control" id="cepAluno" name="cepAluno" placeholder="CEP do Aluno" required="true" maxlength="8">
                         </div>
 
                         <div class="form-group">

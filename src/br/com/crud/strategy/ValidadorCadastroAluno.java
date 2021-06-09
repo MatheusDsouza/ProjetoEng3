@@ -61,7 +61,7 @@ public class ValidadorCadastroAluno implements IStrategy {
 			}
 			
 		}else{
-			return "Deve ser registrado um cliente!";
+			return "Deve ser registrado um aluno!";
 		}
 		
 	}

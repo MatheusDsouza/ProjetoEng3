@@ -44,7 +44,7 @@ public class TurmaDao{
 
 		try {
 
-			System.out.println("-ENTROU NO DAO DE TURMA PARA FAZER CONSULTA");
+			
 			pst = conexao.prepareStatement(sql);
 
 			rs = pst.executeQuery();
@@ -64,7 +64,7 @@ public class TurmaDao{
 
 			conexao.commit();
 
-			System.out.println("-CONSULTA DE TURMA REALIZADA");
+			
 		} catch (SQLException e) {
 			try {
 				conexao.rollback();
@@ -100,7 +100,7 @@ public class TurmaDao{
 
 		try {
 
-			System.out.println("-ENTROU NO DAO DE TURMA PARA FAZER CONSULTA POR ID");
+			
 			pst = conexao.prepareStatement(sql);
 
 			rs = pst.executeQuery();
@@ -118,7 +118,7 @@ public class TurmaDao{
 
 			conexao.commit();
 
-			System.out.println("CONSULTA DE TURMA POR ID REALIZADA");
+			
 		} catch (SQLException e) {
 			try {
 				conexao.rollback();
