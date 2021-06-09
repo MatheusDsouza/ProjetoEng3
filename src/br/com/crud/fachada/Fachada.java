@@ -37,7 +37,7 @@ public class Fachada implements IFachada {
 		daos.put(Aluno.class.getName(), new AlunoDao());
 		daos.put(Endereco.class.getName(), new EnderecoDao());
 
-		// CRIA LISTAS PARA REGRAS DE CADA DOMINIO
+		
 		List<IStrategy> rngAluno = new ArrayList<IStrategy>();
 		
 

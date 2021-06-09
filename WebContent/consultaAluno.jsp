@@ -23,7 +23,7 @@
                 
                     <div class="col-flex">
                     
-                    <h1>Consulta de Alunos</h1><br/>
+                    <h1 class="text-center">Consulta de Alunos</h1><br/>
                     
                     <div class="text-success">
 				        <c:if test="${not empty mensagem}">
@@ -31,7 +31,7 @@
 						</c:if>
 					</div>
                     
-                    <div class="row justify-content-left">
+                    <div class="row justify-content-center">
 	                    <div class="col-1">
 	               			 <a href="index.html" class="btn btn-outline-danger">Voltar</a>
 			            </div>
