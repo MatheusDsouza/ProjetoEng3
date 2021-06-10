@@ -36,7 +36,11 @@
 	               			 <a href="index.html" class="btn btn-outline-danger">Voltar</a>
 			            </div>
 	                    <div class="col-1">
-	               			 <a href="cadAluno.jsp" class="btn btn-primary">Adicionar</a>
+                            <form method="GET" action="ServletCadAluno">
+
+                                <button id="OPERACAO" name="OPERACAO" value="CADASTRO" type="submit" class="btn btn-primary">Adicionar</button>
+            
+                            </form>
 			            </div>
 		            </div>
 
