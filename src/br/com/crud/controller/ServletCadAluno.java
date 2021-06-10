@@ -9,9 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.crud.dao.AlunoDao;
 import br.com.crud.dao.TurmaDao;
-import br.com.crud.model.Aluno;
 import br.com.crud.model.Turma;
 
 public class ServletCadAluno extends HttpServlet {

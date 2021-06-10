@@ -10,7 +10,6 @@ import br.com.crud.model.Aluno;
 import br.com.crud.model.Endereco;
 import br.com.crud.model.EntidadeDominio;
 import br.com.crud.model.Resultado;
-import br.com.crud.model.Turma;
 
 public class AlunoDao extends AbstractDao {
 
@@ -96,7 +95,6 @@ public class AlunoDao extends AbstractDao {
 			EnderecoDao eDao = new EnderecoDao();
 			int idTurma = 0;
 			int idEnd = 0;
-			int i = 1;
 
 			while (rs.next()) {
 

@@ -3,8 +3,6 @@ package br.com.crud.strategy;
 import java.util.List;
 
 import br.com.crud.dao.AlunoDao;
-import br.com.crud.dao.TurmaDao;
-import br.com.crud.model.Aluno;
 import br.com.crud.model.EntidadeDominio;
 
 public class ValidadorQuantidadeTurma implements IStrategy {

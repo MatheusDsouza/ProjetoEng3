@@ -5,7 +5,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import br.com.crud.model.Aluno;
 import br.com.crud.model.Cidade;
 import br.com.crud.model.Endereco;
 import br.com.crud.model.EntidadeDominio;
