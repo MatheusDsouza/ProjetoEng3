@@ -50,13 +50,9 @@
                             <br />
                             <select class="custom-select" id="turmaAluno" name="turmaAluno" required="true">
                                 <option selected value="">Selecione a turma do Aluno</option>
-                                <%
-                                	TurmaDao turma = new TurmaDao();
-                                	for (Turma t: turma.consultar()) {
-                                		
-                                %>
-                                <option value="<%= t.getId()%>"><%= t.getTurma()%></option>
-                                <%} %>
+                                <c:forEach items="${turmas}" var="turma">                         		
+	                             			<option value="${turma.getId()}">${turma.getTurma()}</option>
+                                </c:forEach>
                             </select>
                         </div>
 

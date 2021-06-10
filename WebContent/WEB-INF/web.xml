@@ -21,6 +21,11 @@
 		<servlet-name>FormEditarAluno</servlet-name>
 		<servlet-class>br.com.crud.controller.ServletEditarAluno</servlet-class>
 	</servlet>
+	
+	<servlet>
+		<servlet-name>ServletCadAluno</servlet-name>
+		<servlet-class>br.com.crud.controller.ServletCadAluno</servlet-class>
+	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>Controller</servlet-name>
@@ -45,6 +50,11 @@
 	<servlet-mapping>
 		<servlet-name>FormEditarAluno</servlet-name>
 		<url-pattern>/FormEditarAluno</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>ServletCadAluno</servlet-name>
+		<url-pattern>/ServletCadAluno</url-pattern>
 	</servlet-mapping>
 	
 </web-app>
